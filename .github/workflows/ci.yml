@@ -22,8 +22,17 @@ jobs:
 
       - run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Formatação
         run: npm run format:check
+
+      # o expo-env.d.ts fica fora do git e só o expo start gera; aqui ele é escrito à mão
+      - name: Tipos
+        run: |
+          echo '/// <reference types="expo/types" />' > expo-env.d.ts
+          npm run typecheck
 
       - name: Expo Doctor
         run: npx expo-doctor

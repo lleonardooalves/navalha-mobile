@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "dependencies": {
-    "expo": "~58.0.25",
+    "expo": "~58.0.26",
     "expo-constants": "~58.0.15",
     "expo-font": "~58.0.11",
     "expo-linking": "~58.0.17",
-    "expo-router": "~58.0.31",
+    "expo-router": "~58.0.32",
     "expo-splash-screen": "~58.0.14",
     "expo-status-bar": "~58.0.5",
     "expo-system-ui": "~58.0.7",
@@ -23,6 +23,9 @@
   },
   "devDependencies": {
     "@types/react": "~19.3.0",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~58.0.4",
+    "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.10.1",
     "typescript": "~6.0.3"
   },
@@ -33,7 +36,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
   },
   "private": true
 }
