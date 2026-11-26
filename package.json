@@ -39,7 +39,8 @@
     "lint": "expo lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "api:types": "npx -y openapi-typescript@7 https://navalha-api-3ge1.onrender.com/docs-json -o src/api/schema.d.ts && prettier --write src/api/schema.d.ts"
   },
   "private": true
 }
