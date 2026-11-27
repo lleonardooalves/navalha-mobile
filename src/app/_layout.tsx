@@ -9,6 +9,8 @@ import { Manrope_600SemiBold } from '@expo-google-fonts/manrope/600SemiBold';
 import { Manrope_700Bold } from '@expo-google-fonts/manrope/700Bold';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { restaurar } from '@/auth/sessao';
+import { useSessao } from '@/auth/store';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,13 +36,20 @@ export default function RootLayout() {
     Manrope_700Bold,
   });
 
+  const status = useSessao((s) => s.status);
+  const pronto = (fontsLoaded || !!fontError) && status !== 'carregando';
+
   useEffect(() => {
-    if (fontsLoaded || fontError) {
+    restaurar();
+  }, []);
+
+  useEffect(() => {
+    if (pronto) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded, fontError]);
+  }, [pronto]);
 
-  if (!fontsLoaded && !fontError) {
+  if (!pronto) {
     return null;
   }
 
